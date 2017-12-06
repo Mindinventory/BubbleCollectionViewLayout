@@ -4,7 +4,7 @@
 ![bubble_landscape](https://user-images.githubusercontent.com/4393462/33650242-25296696-da87-11e7-8b32-cde7a523edc9.png)
 
 # Usage
-Objective C -
+## Objective C -
 1. Add "MICollectionViewBubbleLayout" ObjectiveC files to your project.
 
 2. Conform delegate "MICollectionViewBubbleLayoutDelegate" to your class.
@@ -32,7 +32,7 @@ Objective C -
         }
     
     
-Swift -
+## Swift -
 1. Add "MICollectionViewBubbleLayout" Swift file to your project.
 
 2. Conform delegate "MICollectionViewBubbleLayoutDelegate" to your class.
