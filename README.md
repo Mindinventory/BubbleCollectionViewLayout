@@ -4,30 +4,19 @@
 ![bubble_landscape](https://user-images.githubusercontent.com/4393462/33650242-25296696-da87-11e7-8b32-cde7a523edc9.png)
 
 # Usage
-1. Add "MICollectionViewBubbleLayout" ObjectiveC files for Objective C or Swift file for Swift to your project.
+Objective C -
+1. Add "MICollectionViewBubbleLayout" ObjectiveC files to your project.
 
 2. Conform delegate "MICollectionViewBubbleLayoutDelegate" to your class.
 
 3. Set bubble layout in collectionview.
-
-Objective C -
 
     MICollectionViewBubbleLayout *layout = [[MICollectionViewBubbleLayout alloc] initWithDelegate:self];
     [layout setMinimumLineSpacing:6.0f];
     [layout setMinimumInteritemSpacing:6.0f];
     [collVData setCollectionViewLayout:layout];
     
-Swift -
-
-    let bubbleLayout = MICollectionViewBubbleLayout()
-    bubbleLayout.minimumLineSpacing = 6.0
-    bubbleLayout.minimumInteritemSpacing = 6.0
-    bubbleLayout.delegate = self 
-    collVData.setCollectionViewLayout(bubbleLayout, animated: false)
-
 4. Implement MICollectionViewBubbleLayoutDelegate method to return size according to your text content.
-
-Objective C -
 
     - (CGSize)collectionView:(UICollectionView *)collectionView itemSizeAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -42,7 +31,21 @@ Objective C -
         return size;
     }
     
+    
 Swift -
+1. Add "MICollectionViewBubbleLayout" Swift file to your project.
+
+2. Conform delegate "MICollectionViewBubbleLayoutDelegate" to your class.
+
+3. Set bubble layout in collectionview.
+
+    let bubbleLayout = MICollectionViewBubbleLayout()
+    bubbleLayout.minimumLineSpacing = 6.0
+    bubbleLayout.minimumInteritemSpacing = 6.0
+    bubbleLayout.delegate = self 
+    collVData.setCollectionViewLayout(bubbleLayout, animated: false)
+
+4. Implement MICollectionViewBubbleLayoutDelegate method to return size according to your text content.
 
     func collectionView(_ collectionView:UICollectionView, itemSizeAt indexPath:NSIndexPath) -> CGSize
     {
