@@ -9,27 +9,27 @@ Objective C -
 
 2. Conform delegate "MICollectionViewBubbleLayoutDelegate" to your class.
 
-3. Set bubble layout in collectionview.
+3. Set bubble layout in collectionview. 
 
-    MICollectionViewBubbleLayout *layout = [[MICollectionViewBubbleLayout alloc] initWithDelegate:self];
-    [layout setMinimumLineSpacing:6.0f];
-    [layout setMinimumInteritemSpacing:6.0f];
-    [collVData setCollectionViewLayout:layout];
+        MICollectionViewBubbleLayout *layout = [[MICollectionViewBubbleLayout alloc] initWithDelegate:self];
+        [layout setMinimumLineSpacing:6.0f];
+        [layout setMinimumInteritemSpacing:6.0f];
+        [collVData setCollectionViewLayout:layout];
     
 4. Implement MICollectionViewBubbleLayoutDelegate method to return size according to your text content.
 
-    - (CGSize)collectionView:(UICollectionView *)collectionView itemSizeAtIndexPath:(NSIndexPath *)indexPath {
+        - (CGSize)collectionView:(UICollectionView *)collectionView itemSizeAtIndexPath:(NSIndexPath *)indexPath {
     
-        NSString *title = arrData[indexPath.row];
-        CGSize size = [title sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Bold" size:15]}];
-        size.width = ceilf(size.width + CTitlePadding * 2);
-        size.height = 24;
+            NSString *title = arrData[indexPath.row];
+            CGSize size = [title sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Bold" size:15]}];
+            size.width = ceilf(size.width + CTitlePadding * 2);
+            size.height = 24;
     
-        //...Checking if item width is greater than collection view width then set item width == collection view width.
-        if (size.width > collectionView.frame.size.width)
-            size.width = collectionView.frame.size.width;
-        return size;
-    }
+            //...Checking if item width is greater than collection view width then set item width == collection view width.
+            if (size.width > collectionView.frame.size.width)
+                size.width = collectionView.frame.size.width;
+             return size;
+        }
     
     
 Swift -
@@ -39,25 +39,25 @@ Swift -
 
 3. Set bubble layout in collectionview.
 
-    let bubbleLayout = MICollectionViewBubbleLayout()
-    bubbleLayout.minimumLineSpacing = 6.0
-    bubbleLayout.minimumInteritemSpacing = 6.0
-    bubbleLayout.delegate = self 
-    collVData.setCollectionViewLayout(bubbleLayout, animated: false)
+        let bubbleLayout = MICollectionViewBubbleLayout()
+        bubbleLayout.minimumLineSpacing = 6.0
+        bubbleLayout.minimumInteritemSpacing = 6.0
+        bubbleLayout.delegate = self 
+        collVData.setCollectionViewLayout(bubbleLayout, animated: false)
 
 4. Implement MICollectionViewBubbleLayoutDelegate method to return size according to your text content.
 
-    func collectionView(_ collectionView:UICollectionView, itemSizeAt indexPath:NSIndexPath) -> CGSize
-    {
-        let title = arrData![indexPath.row] as! NSString
-        var size = title.size(withAttributes: [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 15)!])
-        size.width = CGFloat(ceilf(Float(size.width + CGFloat(kItemPadding * 2))))
-        size.height = 24
+        func collectionView(_ collectionView:UICollectionView, itemSizeAt indexPath:NSIndexPath) -> CGSize
+        {
+            let title = arrData![indexPath.row] as! NSString
+            var size = title.size(withAttributes: [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 15)!])
+            size.width = CGFloat(ceilf(Float(size.width + CGFloat(kItemPadding * 2))))
+            size.height = 24
         
-        //...Checking if item width is greater than collection view width then set item width == collection view width.
-        if size.width > collectionView.frame.size.width {
-            size.width = collectionView.frame.size.width
+            //...Checking if item width is greater than collection view width then set item width == collection view width.
+            if size.width > collectionView.frame.size.width {
+                size.width = collectionView.frame.size.width
+            }
+        
+            return size;
         }
-        
-        return size;
-    }
