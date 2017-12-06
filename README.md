@@ -9,6 +9,7 @@
 2. Conform delegate "MICollectionViewBubbleLayoutDelegate" to your class.
 
 3. Set bubble layout in collectionview.
+
 Objective C -
 
     MICollectionViewBubbleLayout *layout = [[MICollectionViewBubbleLayout alloc] initWithDelegate:self];
@@ -25,6 +26,7 @@ Swift -
     collVData.setCollectionViewLayout(bubbleLayout, animated: false)
 
 4. Implement MICollectionViewBubbleLayoutDelegate method to return size according to your text content.
+
 Objective C -
 
     - (CGSize)collectionView:(UICollectionView *)collectionView itemSizeAtIndexPath:(NSIndexPath *)indexPath {
