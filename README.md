@@ -10,11 +10,12 @@ Minimum OS 8.1 and later
 
 # Manual Installation
 You can directly add Below the source files from Class folder to your project.
+
 # Objective C
 1) MIBubbleCollectionViewCell.h
-2)MIBubbleCollectionViewCell.m
-3)MICollectionViewBubbleLayout.h
-4)MICollectionViewBubbleLayout.m
+2) MIBubbleCollectionViewCell.m
+3) MICollectionViewBubbleLayout.h
+4) MICollectionViewBubbleLayout.m
 # Swift
 1) MIBubbleCollectionViewCell.swift
 2) MICollectionViewBubbleLayout.swift
