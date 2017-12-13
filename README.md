@@ -32,8 +32,8 @@ Here is the instruction of how to use UICollectionViewFlowLayout in the Storyboa
 3)Chose the MIBubbleCollectionViewCell as a custom class inside the UICollectionViewCell to the storyboard.
 Configuration for change DefaultInterItemSpacing & DefaultLineSpacing of collecttionview cell you just have to change the value of below two constant in MICollectionViewBubbleLayout.h
 
-kDefaultInterItemSpacing    5.0f
-kDefaultLineSpacing         5.0f
+1)kDefaultInterItemSpacing    5.0f
+2)kDefaultLineSpacing         5.0f
 
 ### Objective C -
 1. Add "MICollectionViewBubbleLayout" ObjectiveC files to your project.
