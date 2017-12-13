@@ -5,7 +5,35 @@ Used to get layout like following screens in UICollectionView using custom layou
 
 ![bubble_landscape](https://user-images.githubusercontent.com/4393462/33650242-25296696-da87-11e7-8b32-cde7a523edc9.png)
 
+# Requirements
+Minimum OS 8.1 and later
+
+# Manual Installation
+You can directly add Below the source files from Class folder to your project.
+# Objective C
+1) MIBubbleCollectionViewCell.h
+2)MIBubbleCollectionViewCell.m
+3)MICollectionViewBubbleLayout.h
+4)MICollectionViewBubbleLayout.m
+# Swift
+1) MIBubbleCollectionViewCell.swift
+2) MICollectionViewBubbleLayout.swift
+
+# Introduce
+MICollectionViewBubbleLayout is subclass of UICollectionViewFlowLayout with the custom layout.
+
 # Usage
+The easy way is to use UICollectionViewFlowLayout as it is. You can also subclass it if you intend to change the default behaviour.
+
+Here is the instruction of how to use UICollectionViewFlowLayout in the Storyboard.
+
+1) Add native UICollectionView to the storyboard, establish relationships with its view controllers.
+2) Add UICollectionViewCell in the UICollectionView to the storyboard.
+3)Chose the MIBubbleCollectionViewCell as a custom class inside the UICollectionViewCell to the storyboard.
+Configuration for change DefaultInterItemSpacing & DefaultLineSpacing of collecttionview cell you just have to change the value of below two constant in MICollectionViewBubbleLayout.h
+#define kDefaultInterItemSpacing    5.0f
+#define kDefaultLineSpacing         5.0f
+
 ### Objective C -
 1. Add "MICollectionViewBubbleLayout" ObjectiveC files to your project.
 
