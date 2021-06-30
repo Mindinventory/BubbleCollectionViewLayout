@@ -9,15 +9,15 @@
 import UIKit
 
 class MIMainViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MICollectionViewBubbleLayoutDelegate {
-
-    @IBOutlet var collVData:UICollectionView!
     
-    let kItemPadding = 15
-    var arrData:NSArray?
+    @IBOutlet private var collVData: UICollectionView!
+    
+    private let kItemPadding = 15
+    private var arrData = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //...
         arrData = ["None", "Glazed", "Sugar", "Powdered Sugar", "Chocolate with Sprinkles", "Chocolate", "Maple", "Regular", "Chocolate", "Blueberry", "Devil's Food", "None", "Glazed", "Sugar", "Powdered Sugar", "Chocolate with Sprinkles", "Chocolate", "Maple", "None", "Glazed", "Sugar", "Powdered Sugar", "Chocolate with Sprinkles", "Chocolate", "Maple", "Regular", "Chocolate", "Blueberry", "Devil's Food", "None", "Glazed", "Sugar", "Powdered Sugar", "Chocolate with Sprinkles", "Chocolate", "Maple", "None", "Glazed", "Sugar", "Powdered Sugar", "Chocolate with Sprinkles", "Chocolate", "Maple", "Regular", "Chocolate", "Blueberry", "Devil's Food", "None", "Glazed", "Sugar", "Powdered Sugar", "Chocolate with Sprinkles", "Chocolate", "Maple", "None", "Glazed", "Sugar", "Powdered Sugar", "Chocolate with Sprinkles", "Chocolate", "Maple", "Regular", "Chocolate", "Blueberry", "Devil's Food", "None", "Glazed", "Sugar", "Powdered Sugar", "Chocolate with Sprinkles", "Chocolate", "Maple", "None", "Glazed", "Sugar", "Powdered Sugar", "Chocolate with Sprinkles", "Chocolate", "Maple", "Regular", "Chocolate", "Blueberry", "Devil's Food", "None", "Glazed", "Sugar", "Powdered Sugar", "Chocolate with Sprinkles", "Chocolate", "Maple", "None", "Glazed", "Sugar", "Powdered Sugar", "Chocolate with Sprinkles", "Chocolate", "Maple", "Regular", "Chocolate", "Blueberry", "Devil's Food", "None", "Glazed", "Sugar", "Powdered Sugar", "Chocolate with Sprinkles", "Chocolate", "Maple", "None", "Glazed", "Sugar", "Powdered Sugar", "Chocolate with Sprinkles", "Chocolate", "Maple", "Regular", "Chocolate", "Blueberry", "Devil's Food", "None", "Glazed", "Sugar", "Powdered Sugar", "Chocolate with Sprinkles", "Chocolate", "Maple", "None", "Glazed", "Sugar", "Powdered Sugar", "Chocolate with Sprinkles", "Chocolate", "Maple", "Regular", "Chocolate", "Blueberry", "Devil's Food", "None", "Glazed", "Sugar", "Powdered Sugar", "Chocolate with Sprinkles", "Chocolate", "Maple"]
         
@@ -28,36 +28,35 @@ class MIMainViewController: UIViewController, UICollectionViewDataSource, UIColl
         bubbleLayout.minimumInteritemSpacing = 6.0
         bubbleLayout.delegate = self 
         collVData.setCollectionViewLayout(bubbleLayout, animated: false)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+    }  
     
-
     // MARK: -
     // MARK: - UICollectionView Delegate & Datasource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrData!.count
+        return arrData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let indentifier = "MIBubbleCollectionViewCell"
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: indentifier, for: indexPath) as! MIBubbleCollectionViewCell
         
-        cell.lblTitle.text = arrData![indexPath.row] as? String
-        return cell
+        let indentifier = "MIBubbleCollectionViewCell"
+        
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: indentifier, for: indexPath) as? MIBubbleCollectionViewCell {
+            
+            cell.lblTitle.text = arrData[indexPath.row]
+            return cell
+        }
+        return UICollectionViewCell()
     }
     
     
     // MARK: -
     // MARK: - MICollectionViewBubbleLayoutDelegate
     
-    func collectionView(_ collectionView:UICollectionView, itemSizeAt indexPath:NSIndexPath) -> CGSize
-    {
-        let title = arrData![indexPath.row] as! NSString
-        var size = title.size(withAttributes: [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 15)!])
+    func collectionView(_ collectionView:UICollectionView, itemSizeAt indexPath:NSIndexPath) -> CGSize {
+        
+        let title = arrData[indexPath.row]
+        var size = title.size(withAttributes: [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 15)!])
         size.width = CGFloat(ceilf(Float(size.width + CGFloat(kItemPadding * 2))))
         size.height = 24
         
@@ -65,8 +64,6 @@ class MIMainViewController: UIViewController, UICollectionViewDataSource, UIColl
         if size.width > collectionView.frame.size.width {
             size.width = collectionView.frame.size.width
         }
-        
-        return size;
+        return size
     }
-
 }

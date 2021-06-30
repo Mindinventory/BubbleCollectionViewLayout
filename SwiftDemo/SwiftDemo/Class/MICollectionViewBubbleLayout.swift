@@ -31,7 +31,7 @@ class MICollectionViewBubbleLayout: UICollectionViewFlowLayout {
     override init() {
         super.init()
         
-        scrollDirection = UICollectionViewScrollDirection.vertical;
+        scrollDirection = UICollectionView.ScrollDirection.vertical
         minimumLineSpacing = cLineSpacing
         minimumInteritemSpacing = cInterItemSpacing
     }
@@ -39,7 +39,7 @@ class MICollectionViewBubbleLayout: UICollectionViewFlowLayout {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        scrollDirection = UICollectionViewScrollDirection.vertical;
+        scrollDirection = UICollectionView.ScrollDirection.vertical
         minimumLineSpacing = cLineSpacing
         minimumInteritemSpacing = cInterItemSpacing
     }
@@ -51,8 +51,7 @@ class MICollectionViewBubbleLayout: UICollectionViewFlowLayout {
     override func prepare() {
         super.prepare()
         
-        if (collectionView?.numberOfSections == 0 ||
-            collectionView?.numberOfItems(inSection: 0) == 0) {
+        if (collectionView?.numberOfSections == 0 || collectionView?.numberOfItems(inSection: 0) == 0) {
             return
         }
         
@@ -65,6 +64,7 @@ class MICollectionViewBubbleLayout: UICollectionViewFlowLayout {
         itemAttributesCache = []
         
         for index in 0..<numberOfItems {
+            
             indexPath = NSIndexPath(item: index, section: 0)
             iSize = (delegate?.collectionView(collectionView!, itemSizeAt: indexPath!))!
             
@@ -95,7 +95,8 @@ class MICollectionViewBubbleLayout: UICollectionViewFlowLayout {
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
-        let numberOfItems:NSInteger = (self.collectionView?.numberOfItems(inSection: 0))!
+        let numberOfItems = (self.collectionView?.numberOfItems(inSection: 0))!
+        
         let itemAttributes = itemAttributesCache.filter {
             $0.frame.intersects(rect) &&
                 $0.indexPath.row < numberOfItems
@@ -105,6 +106,7 @@ class MICollectionViewBubbleLayout: UICollectionViewFlowLayout {
     }
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        
         return itemAttributesCache.first {
             $0.indexPath == indexPath
         }
