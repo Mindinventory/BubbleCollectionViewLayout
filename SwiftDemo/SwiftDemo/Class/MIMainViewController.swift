@@ -8,12 +8,20 @@
 
 import UIKit
 
-class MIMainViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MICollectionViewBubbleLayoutDelegate {
+protocol ItemAction: AnyObject {
+    func onCloseButtonTapped(with item: Item?)
+}
+
+final class MIMainViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MICollectionViewBubbleLayoutDelegate {
     
     @IBOutlet private var collVData: UICollectionView!
     
     private let kItemPadding = 10
-    private var arrData: [Item] = Item.mockItems
+    private var arrData: [Item] = Item.mockItems {
+        didSet {
+            collVData.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +47,7 @@ class MIMainViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: indentifier, for: indexPath) as? MIBubbleCollectionViewCell {
             cell.configure(with: arrData[indexPath.row])
+            cell.delegate = self
             return cell
         }
         return UICollectionViewCell()
@@ -46,10 +55,8 @@ class MIMainViewController: UIViewController, UICollectionViewDataSource, UIColl
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         arrData[indexPath.row].isSelected.toggle()
-        collectionView.reloadData()
     }
-    
-    
+
     // MARK: -
     // MARK: - MICollectionViewBubbleLayoutDelegate
     
@@ -57,7 +64,11 @@ class MIMainViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         let title = arrData[indexPath.row].name
         var size = title.size(withAttributes: [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 15)!])
-        size.width = CGFloat(ceilf(Float(size.width + 28 + CGFloat(kItemPadding * 2))))
+        let closeButtonWidth = 20.0
+        let imageWidth = 20.0
+        let spacing = 18.0
+        let totalWidth = Float(size.width + closeButtonWidth + imageWidth + spacing + CGFloat(kItemPadding * 2))
+        size.width = CGFloat(ceilf(totalWidth))
         size.height = 40
 
         //...Checking if item width is greater than collection view width then set item width == collection view width.
@@ -65,5 +76,14 @@ class MIMainViewController: UIViewController, UICollectionViewDataSource, UIColl
             size.width = collectionView.frame.size.width
         }
         return size
+    }
+}
+
+extension MIMainViewController: ItemAction {
+
+    func onCloseButtonTapped(with item: Item?) {
+
+        guard let safeItem = item else { return }
+        arrData = arrData.filter({$0.id != safeItem.id})
     }
 }
