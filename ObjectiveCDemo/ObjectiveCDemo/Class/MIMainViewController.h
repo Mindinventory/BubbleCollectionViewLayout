@@ -10,4 +10,7 @@
 
 @interface MIMainViewController : UIViewController
 
+@property(nonatomic, strong) IBOutlet UICollectionView *collVData;
+
+
 @end

@@ -10,6 +10,7 @@
 
 @implementation MIBubbleCollectionViewCell
 
+
 - (void)awakeFromNib {
     [super awakeFromNib];
 }
