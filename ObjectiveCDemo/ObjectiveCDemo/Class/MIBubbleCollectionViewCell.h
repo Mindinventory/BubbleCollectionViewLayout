@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface MIBubbleCollectionViewCell : UICollectionViewCell
-@property (nonatomic, weak) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UIImageView *imageRoundItem;
+@property (weak, nonatomic) IBOutlet UIButton *btnClose;
+@property (strong, nonatomic) NSArray *arrayFiltered;
 @end
