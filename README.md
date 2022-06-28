@@ -1,8 +1,8 @@
 # BubbleCollectionViewLayout
 Used to get layout like following screens in UICollectionView using custom layout.
 
-![bubble_portrait](https://user-images.githubusercontent.com/84714866/176125212-0eaf8bf7-e67a-424a-83a1-fe702f8dbed5.png)
 ![bubble_landscape](https://user-images.githubusercontent.com/84714866/176124648-9eed4e73-9a7c-4123-aeee-8e94fdec511a.png)
+![bubble_portrait](https://user-images.githubusercontent.com/84714866/176137944-2350c787-53bf-441b-b013-cc4608dbc7bc.png)
 
 # Requirements
 Minimum OS 8.1 and later
