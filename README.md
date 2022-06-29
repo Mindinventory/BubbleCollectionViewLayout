@@ -25,7 +25,10 @@ You can directly add Below the source files from Class folder to your project.
 MICollectionViewBubbleLayout is subclass of UICollectionViewFlowLayout with the custom layout.
 
 # Usage
-The easy way is to use UICollectionViewFlowLayout as it is. You can also subclass it if you intend to change the default behaviour.
+
+- The easy way is to use UICollectionViewFlowLayout as it is. You can also subclass it if you intend to change the default behaviour.
+- Either use it as a list to select the different tags and it's values or add the tags or value and show it in a list
+
 
 Here is the instruction of how to use UICollectionViewFlowLayout in the Storyboard.
 
