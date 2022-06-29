@@ -1,8 +1,9 @@
 # BubbleCollectionViewLayout
 Used to get layout like following screens in UICollectionView using custom layout.
 
-![bubble_landscape](https://user-images.githubusercontent.com/84714866/176124648-9eed4e73-9a7c-4123-aeee-8e94fdec511a.png)
-![bubble_portrait](https://user-images.githubusercontent.com/84714866/176137944-2350c787-53bf-441b-b013-cc4608dbc7bc.png)
+
+![bubble_landscape](https://user-images.githubusercontent.com/84714866/176373657-19d4f9e2-131e-48f5-9f2c-77a370808c03.png)
+![bubble_portrait](https://user-images.githubusercontent.com/84714866/176371515-989f8bc7-6e45-4d6f-87a1-c3d0e87fa803.png)
 
 # Requirements
 Minimum OS 8.1 and later
@@ -18,6 +19,7 @@ You can directly add Below the source files from Class folder to your project.
 # Swift
 1) MIBubbleCollectionViewCell.swift
 2) MICollectionViewBubbleLayout.swift
+3) RoundImageView.swift
 
 # Introduce
 MICollectionViewBubbleLayout is subclass of UICollectionViewFlowLayout with the custom layout.
@@ -81,10 +83,14 @@ Configuration for change DefaultInterItemSpacing & DefaultLineSpacing of collect
 
         func collectionView(_ collectionView:UICollectionView, itemSizeAt indexPath:NSIndexPath) -> CGSize
         {
-            let title = arrData![indexPath.row] as! NSString
-            var size = title.size(withAttributes: [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 15)!])
-            size.width = CGFloat(ceilf(Float(size.width + CGFloat(kItemPadding * 2))))
-            size.height = 24
+            let title = arrData[indexPath.row].name
+            var size = title.size(withAttributes: [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 15)!])
+            let closeButtonWidth = 20.0
+            let imageWidth = 20.0
+            let spacing = 18.0
+            let totalWidth = Float(size.width + closeButtonWidth + imageWidth + spacing + CGFloat(kItemPadding * 2))
+            size.width = CGFloat(ceilf(totalWidth))
+            size.height = 40
         
             //...Checking if item width is greater than collection view width then set item width == collection view width.
             if size.width > collectionView.frame.size.width {
