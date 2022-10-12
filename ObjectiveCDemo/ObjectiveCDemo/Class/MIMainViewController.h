@@ -11,6 +11,10 @@
 @interface MIMainViewController : UIViewController
 
 @property(nonatomic, strong) IBOutlet UICollectionView *collVData;
+@property(nonatomic, strong) IBOutlet UITextField *textfiledEnterDetails;
+@property(nonatomic, strong) IBOutlet UIButton *buttonDone;
+@property(nonatomic, strong) IBOutlet UIButton *buttonAddMoreData;
+@property(nonatomic, strong) IBOutlet UIView *viewAddMoreData;
 
 
 @end

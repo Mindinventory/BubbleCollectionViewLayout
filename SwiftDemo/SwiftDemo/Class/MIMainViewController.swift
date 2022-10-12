@@ -15,7 +15,11 @@ protocol ItemAction: AnyObject {
 final class MIMainViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MICollectionViewBubbleLayoutDelegate {
     
     @IBOutlet private var collVData: UICollectionView!
-    
+    @IBOutlet private var buttonDone: UIButton!
+    @IBOutlet private var buttonAddMoreData: UIButton!
+    @IBOutlet private var viewAddMoreData: UIView!
+    @IBOutlet private var textfiledEnterDetails: UITextField!
+
     private let kItemPadding = 10
     private var arrData: [Item] = Item.mockItems {
         didSet {
@@ -32,8 +36,23 @@ final class MIMainViewController: UIViewController, UICollectionViewDataSource, 
         bubbleLayout.minimumInteritemSpacing = 6.0
         bubbleLayout.delegate = self 
         collVData.setCollectionViewLayout(bubbleLayout, animated: false)
-    }  
-    
+    }
+    // MARK: -
+    // MARK: - IBACTION METHODS
+    @IBAction func addmoreButtonTapped(_ sender: Any) {
+        buttonAddMoreData.isHidden = true
+        viewAddMoreData.isHidden = false
+    }
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        if(self.textfiledEnterDetails.text?.isEmpty == false){
+            arrData.append(Item(id:  UUID(), name: self.textfiledEnterDetails.text ?? "",image: ItemResource.chocolate.image,
+                                color: .orange,
+                                isSelected: false))
+            self.textfiledEnterDetails.resignFirstResponder()
+            collVData.reloadData()
+            self.textfiledEnterDetails.text = ""
+        }
+    }
     // MARK: -
     // MARK: - UICollectionView Delegate & Datasource
     

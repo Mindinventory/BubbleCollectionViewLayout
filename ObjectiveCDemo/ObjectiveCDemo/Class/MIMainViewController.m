@@ -83,7 +83,21 @@
     [arrData removeObjectAtIndex:indexRow];
     [collVData reloadData];
 }
-
+-(IBAction)doneButtonTapped:(UIButton*)sender
+{
+    if ([self.textfiledEnterDetails hasText])
+    {
+        [arrData addObject:[self createDictionary:self.textfiledEnterDetails.text isSelected:[NSNumber numberWithBool:false]]];
+        [self.textfiledEnterDetails resignFirstResponder];
+        [collVData reloadData];
+        self.textfiledEnterDetails.text = @"";
+    }
+}
+-(IBAction)addmoreButtonTapped:(UIButton*)sender
+{
+    [self.buttonAddMoreData setHidden:YES];
+    [self.viewAddMoreData setHidden:NO];
+}
 #pragma mark -
 #pragma mark - UICollectionView Delegate & Datasource
 
@@ -103,7 +117,6 @@
     [cell.lblTitle setText:[arrData[indexPath.row] valueForKey:@"name"]];
     cell.imageRoundItem.image = [UIImage imageNamed:@"chocolate"];
     cell.imageRoundItem.layer.cornerRadius = 10.0;
-    
     if ([arrData[indexPath.row] valueForKey:@"isSelected"] == [NSNumber numberWithBool:true]){
         cell.backgroundColor = [UIColor orangeColor];
         cell.btnClose.tintColor = [UIColor whiteColor];
@@ -146,5 +159,6 @@
     }
     return size;
 }
+
 
 @end

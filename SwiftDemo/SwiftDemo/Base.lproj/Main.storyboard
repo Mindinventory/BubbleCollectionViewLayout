@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,8 +20,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vfe-Pc-w5f">
+                                <rect key="frame" x="8" y="16" width="359" height="45"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oc4-76-WCF">
+                                        <rect key="frame" x="8" y="6" width="279" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEs-X9-hL8">
+                                        <rect key="frame" x="301" y="7.5" width="58" height="31"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="5FH-iJ-aJ7"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Done">
+                                            <fontDescription key="titleFontDescription" name="Futura-Bold" family="Futura" pointSize="12"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="doneButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tJY-qb-ueB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="eEs-X9-hL8" firstAttribute="centerY" secondItem="Oc4-76-WCF" secondAttribute="centerY" id="1ki-4n-kyd"/>
+                                    <constraint firstItem="Oc4-76-WCF" firstAttribute="leading" secondItem="Vfe-Pc-w5f" secondAttribute="leading" constant="8" id="FTE-Rl-9Gz"/>
+                                    <constraint firstAttribute="trailing" secondItem="eEs-X9-hL8" secondAttribute="trailing" id="M2U-AL-JHg"/>
+                                    <constraint firstItem="eEs-X9-hL8" firstAttribute="leading" secondItem="Oc4-76-WCF" secondAttribute="trailing" constant="14" id="UCM-Hc-ab5"/>
+                                    <constraint firstItem="Oc4-76-WCF" firstAttribute="top" secondItem="Vfe-Pc-w5f" secondAttribute="top" constant="6" id="lNs-68-jko"/>
+                                    <constraint firstAttribute="height" constant="45" id="qO4-Q7-c9v"/>
+                                    <constraint firstAttribute="bottom" secondItem="Oc4-76-WCF" secondAttribute="bottom" constant="5" id="xJq-CX-2hd"/>
+                                </constraints>
+                            </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="weK-gJ-OV8">
+                                <rect key="frame" x="8" y="16" width="359" height="45"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="pKz-PC-bxo"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add More Data">
+                                    <fontDescription key="titleFontDescription" name="Futura-Bold" family="Futura" pointSize="12"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="addmoreButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wx2-58-NWI"/>
+                                </connections>
+                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKZ-yd-tLT">
-                                <rect key="frame" x="16" y="16" width="343" height="635"/>
+                                <rect key="frame" x="16" y="77" width="343" height="574"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GAv-Ge-iAC">
                                     <size key="itemSize" width="289" height="78"/>
@@ -93,10 +143,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="weK-gJ-OV8" firstAttribute="top" secondItem="2sg-pl-Ub8" secondAttribute="bottom" constant="16" id="3eS-1Y-wp1"/>
+                            <constraint firstAttribute="trailing" secondItem="Vfe-Pc-w5f" secondAttribute="trailing" constant="8" id="4Hz-Mi-uSD"/>
                             <constraint firstAttribute="trailing" secondItem="hKZ-yd-tLT" secondAttribute="trailing" constant="30" id="8bD-jS-Pcc"/>
+                            <constraint firstItem="Vfe-Pc-w5f" firstAttribute="top" secondItem="2sg-pl-Ub8" secondAttribute="bottom" constant="16" id="Bog-dT-6bD"/>
                             <constraint firstItem="hKZ-yd-tLT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="60" id="Buh-OH-q6c"/>
-                            <constraint firstItem="hKZ-yd-tLT" firstAttribute="top" secondItem="2sg-pl-Ub8" secondAttribute="bottom" constant="16" id="W8s-Vq-opF"/>
-                            <constraint firstItem="hKZ-yd-tLT" firstAttribute="top" secondItem="2sg-pl-Ub8" secondAttribute="bottom" constant="16" id="Zzs-eD-Rct"/>
+                            <constraint firstAttribute="trailing" secondItem="weK-gJ-OV8" secondAttribute="trailing" constant="8" id="Bvx-EA-ACa"/>
+                            <constraint firstItem="hKZ-yd-tLT" firstAttribute="top" secondItem="Vfe-Pc-w5f" secondAttribute="bottom" constant="16" id="Rm7-Ur-MFx"/>
+                            <constraint firstItem="hKZ-yd-tLT" firstAttribute="top" secondItem="weK-gJ-OV8" secondAttribute="bottom" constant="16" id="Vcq-iV-B8K"/>
+                            <constraint firstItem="weK-gJ-OV8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="YvH-rn-hwa"/>
+                            <constraint firstItem="Vfe-Pc-w5f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="f69-v6-ste"/>
                             <constraint firstItem="3V1-oF-w0e" firstAttribute="top" secondItem="hKZ-yd-tLT" secondAttribute="bottom" constant="16" id="ghn-Qt-wo9"/>
                             <constraint firstAttribute="trailing" secondItem="hKZ-yd-tLT" secondAttribute="trailing" constant="16" id="laY-W2-3GF"/>
                             <constraint firstItem="hKZ-yd-tLT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="u2F-Zc-vHw"/>
@@ -117,7 +173,11 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="buttonAddMoreData" destination="weK-gJ-OV8" id="nAm-Nw-FAF"/>
+                        <outlet property="buttonDone" destination="eEs-X9-hL8" id="WHE-Zl-I2c"/>
                         <outlet property="collVData" destination="hKZ-yd-tLT" id="QPS-8p-Ca6"/>
+                        <outlet property="textfiledEnterDetails" destination="Oc4-76-WCF" id="OAq-Ol-soi"/>
+                        <outlet property="viewAddMoreData" destination="Vfe-Pc-w5f" id="ML0-6V-sUf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -127,8 +187,14 @@
     </scenes>
     <resources>
         <image name="close_circle" width="48" height="48"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

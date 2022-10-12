@@ -20,8 +20,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJs-Nb-qwe">
+                                <rect key="frame" x="8" y="16" width="359" height="45"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Eh-Jo-fr7">
+                                        <rect key="frame" x="8" y="6" width="279" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="QyW-6E-1Tv"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="527-ig-uMg">
+                                        <rect key="frame" x="301" y="7.5" width="58" height="31"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="Jai-gf-tKu"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Done">
+                                            <fontDescription key="titleFontDescription" name="Futura-Bold" family="Futura" pointSize="12"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="doneButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jme-3f-XJp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="527-ig-uMg" secondAttribute="trailing" id="Bir-RI-UX5"/>
+                                    <constraint firstItem="0Eh-Jo-fr7" firstAttribute="top" secondItem="CJs-Nb-qwe" secondAttribute="top" constant="6" id="ExM-Sl-fdf"/>
+                                    <constraint firstItem="0Eh-Jo-fr7" firstAttribute="leading" secondItem="CJs-Nb-qwe" secondAttribute="leading" constant="8" id="HwE-K9-rAC"/>
+                                    <constraint firstAttribute="height" constant="45" id="S7r-D9-dYA"/>
+                                    <constraint firstItem="527-ig-uMg" firstAttribute="leading" secondItem="0Eh-Jo-fr7" secondAttribute="trailing" constant="14" id="Utv-L0-m6V"/>
+                                    <constraint firstItem="527-ig-uMg" firstAttribute="centerY" secondItem="0Eh-Jo-fr7" secondAttribute="centerY" id="dA8-FZ-p4L"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Eh-Jo-fr7" secondAttribute="bottom" constant="5" id="jtU-lU-Jaa"/>
+                                </constraints>
+                            </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6s-E8-Q18">
+                                <rect key="frame" x="8" y="16" width="359" height="45"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="cX0-HN-rls"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add More Data">
+                                    <fontDescription key="titleFontDescription" name="Futura-Bold" family="Futura" pointSize="12"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="addmoreButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wD9-T8-UXb"/>
+                                </connections>
+                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3b-c2-DSg">
-                                <rect key="frame" x="16" y="16" width="343" height="635"/>
+                                <rect key="frame" x="16" y="77" width="343" height="574"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QiA-HH-ICj">
                                     <size key="itemSize" width="289" height="78"/>
@@ -89,14 +142,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="K3b-c2-DSg" secondAttribute="trailing" constant="16" id="Ghx-6h-ABq"/>
-                            <constraint firstItem="3V1-oF-w0e" firstAttribute="top" secondItem="K3b-c2-DSg" secondAttribute="bottom" constant="16" id="ciO-OF-1TH"/>
-                            <constraint firstItem="K3b-c2-DSg" firstAttribute="top" secondItem="2sg-pl-Ub8" secondAttribute="bottom" constant="16" id="fGW-Pj-3d7"/>
-                            <constraint firstItem="K3b-c2-DSg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="mUf-K5-Uv6"/>
+                            <constraint firstAttribute="trailing" secondItem="CJs-Nb-qwe" secondAttribute="trailing" constant="8" id="4sd-j8-n61"/>
+                            <constraint firstItem="CJs-Nb-qwe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="702-s7-GNa"/>
+                            <constraint firstItem="K3b-c2-DSg" firstAttribute="top" secondItem="CJs-Nb-qwe" secondAttribute="bottom" constant="16" id="CQW-M5-7BO"/>
+                            <constraint firstItem="i6s-E8-Q18" firstAttribute="top" secondItem="2sg-pl-Ub8" secondAttribute="bottom" constant="16" id="FUf-Hc-phe"/>
+                            <constraint firstItem="3V1-oF-w0e" firstAttribute="top" secondItem="K3b-c2-DSg" secondAttribute="bottom" constant="16" id="JyG-JW-vWe"/>
+                            <constraint firstAttribute="trailing" secondItem="i6s-E8-Q18" secondAttribute="trailing" constant="8" id="hU0-bl-rNV"/>
+                            <constraint firstItem="K3b-c2-DSg" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="hd6-PJ-bcV"/>
+                            <constraint firstItem="i6s-E8-Q18" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="rHT-7B-01E"/>
+                            <constraint firstItem="K3b-c2-DSg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="vCC-wC-U3V"/>
+                            <constraint firstItem="CJs-Nb-qwe" firstAttribute="top" secondItem="2sg-pl-Ub8" secondAttribute="bottom" constant="16" id="ynr-A6-tLH"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonAddMoreData" destination="i6s-E8-Q18" id="T6X-KK-ouB"/>
+                        <outlet property="buttonDone" destination="527-ig-uMg" id="aww-iC-U0S"/>
                         <outlet property="collVData" destination="K3b-c2-DSg" id="grR-Wt-8kG"/>
+                        <outlet property="textfiledEnterDetails" destination="0Eh-Jo-fr7" id="Ksa-NU-hDO"/>
+                        <outlet property="viewAddMoreData" destination="CJs-Nb-qwe" id="3nw-Ct-eQP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -106,8 +169,14 @@
     </scenes>
     <resources>
         <image name="close_circle" width="48" height="48"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
