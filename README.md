@@ -109,21 +109,19 @@ Configuration for change DefaultInterItemSpacing & DefaultLineSpacing of collect
         
         func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        switch kind {
+                switch kind {
             
-        case UICollectionView.elementKindSectionHeader:
+                case UICollectionView.elementKindSectionHeader:
             
-            let headerView = collVData.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as! HeaderView
-            headerView.lblTitleText.text = arrData[indexPath.section].title
-            headerView.lblTitleText.sizeToFit()
-            return headerView
+                let headerView = collVData.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as! HeaderView
+                headerView.lblTitleText.text = arrData[indexPath.section].title
+                headerView.lblTitleText.sizeToFit()
+                return headerView
             
-            
-        default:
-            return UICollectionReusableView()
-            
+                default:
+                  return UICollectionReusableView()
+                }
         }
-    }
 
 # LICENSE!
 
