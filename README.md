@@ -4,8 +4,7 @@ Used to get layout like following screens in UICollectionView using custom layou
 
 ![bubble_landscape](https://user-images.githubusercontent.com/84714866/176373657-19d4f9e2-131e-48f5-9f2c-77a370808c03.png)
 ![bubble_portrait](https://user-images.githubusercontent.com/84714866/176371515-989f8bc7-6e45-4d6f-87a1-c3d0e87fa803.png)
-![Simulator Screen Shot - iPhone 14 Pro - 2023-04-20 at 12 52 53](https://user-images.githubusercontent.com/42262083/233291845-40aaaf05-90a6-4550-93cb-2134b11ec7df.png)
-
+![Simulator Screen Shot - iPhone 14 Pro - 2023-04-20 at 15 11 17](https://user-images.githubusercontent.com/42262083/233327928-31ac781d-adb1-427f-82b5-97fc41e76577.png)
 
 # Requirements
 Minimum OS 8.1 and later
