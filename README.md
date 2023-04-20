@@ -106,10 +106,11 @@ Configuration for change DefaultInterItemSpacing & DefaultLineSpacing of collect
             return size;
         }
         
-        func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
+5. If require to add header view 
+
+        func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) ->             UICollectionReusableView {
                 switch kind {
-            
                 case UICollectionView.elementKindSectionHeader:
             
                 let headerView = collVData.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as! HeaderView
@@ -119,8 +120,11 @@ Configuration for change DefaultInterItemSpacing & DefaultLineSpacing of collect
             
                 default:
                   return UICollectionReusableView()
+            
                 }
         }
+
+
 
 # LICENSE!
 
