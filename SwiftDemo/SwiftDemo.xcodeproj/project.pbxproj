@@ -17,6 +17,7 @@
 		788914431FD6D6C500FCFA4B /* MIMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788914421FD6D6C500FCFA4B /* MIMainViewController.swift */; };
 		788914451FD6D6FC00FCFA4B /* MICollectionViewBubbleLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788914441FD6D6FC00FCFA4B /* MICollectionViewBubbleLayout.swift */; };
 		788914471FD6D71700FCFA4B /* MIBubbleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788914461FD6D71700FCFA4B /* MIBubbleCollectionViewCell.swift */; };
+		B80879D029C9767000F1D89E /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80879CF29C9767000F1D89E /* HeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		788914421FD6D6C500FCFA4B /* MIMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIMainViewController.swift; sourceTree = "<group>"; };
 		788914441FD6D6FC00FCFA4B /* MICollectionViewBubbleLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MICollectionViewBubbleLayout.swift; sourceTree = "<group>"; };
 		788914461FD6D71700FCFA4B /* MIBubbleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIBubbleCollectionViewCell.swift; sourceTree = "<group>"; };
+		B80879CF29C9767000F1D89E /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				788914461FD6D71700FCFA4B /* MIBubbleCollectionViewCell.swift */,
 				788914441FD6D6FC00FCFA4B /* MICollectionViewBubbleLayout.swift */,
 				637EFADC286344E500364FEE /* RoundImageView.swift */,
+				B80879CF29C9767000F1D89E /* HeaderView.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				781F56691FD6A2AB002E226A /* AppDelegate.swift in Sources */,
 				637EFADB286344AA00364FEE /* ItemResources.swift in Sources */,
 				788914431FD6D6C500FCFA4B /* MIMainViewController.swift in Sources */,
+				B80879D029C9767000F1D89E /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
