@@ -4,6 +4,8 @@ Used to get layout like following screens in UICollectionView using custom layou
 
 ![bubble_landscape](https://user-images.githubusercontent.com/84714866/176373657-19d4f9e2-131e-48f5-9f2c-77a370808c03.png)
 ![bubble_portrait](https://user-images.githubusercontent.com/84714866/176371515-989f8bc7-6e45-4d6f-87a1-c3d0e87fa803.png)
+![Simulator Screen Shot - iPhone 14 Pro - 2023-04-20 at 12 52 53](https://user-images.githubusercontent.com/42262083/233291845-40aaaf05-90a6-4550-93cb-2134b11ec7df.png)
+
 
 # Requirements
 Minimum OS 8.1 and later
@@ -20,6 +22,7 @@ You can directly add Below the source files from Class folder to your project.
 1) MIBubbleCollectionViewCell.swift
 2) MICollectionViewBubbleLayout.swift
 3) RoundImageView.swift
+4) HeaderView.swift
 
 # Introduce
 MICollectionViewBubbleLayout is subclass of UICollectionViewFlowLayout with the custom layout.
@@ -78,9 +81,10 @@ Configuration for change DefaultInterItemSpacing & DefaultLineSpacing of collect
 
         let bubbleLayout = MICollectionViewBubbleLayout()
         bubbleLayout.minimumLineSpacing = 6.0
-        bubbleLayout.minimumInteritemSpacing = 6.0
-        bubbleLayout.delegate = self 
+        bubbleLayout.minimumInteritemSpacing = 0
+        bubbleLayout.horizontalAlignment = .leading
         collVData.setCollectionViewLayout(bubbleLayout, animated: false)
+        bubbleLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
 
 4. Implement MICollectionViewBubbleLayoutDelegate method to return size according to your text content.
 
@@ -101,6 +105,22 @@ Configuration for change DefaultInterItemSpacing & DefaultLineSpacing of collect
             }
         
             return size;
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+                switch kind {
+            
+                case UICollectionView.elementKindSectionHeader:
+            
+                let headerView = collVData.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as! HeaderView
+                headerView.lblTitleText.text = arrData[indexPath.section].title
+                headerView.lblTitleText.sizeToFit()
+                return headerView
+            
+                default:
+                  return UICollectionReusableView()
+                }
         }
 
 # LICENSE!
