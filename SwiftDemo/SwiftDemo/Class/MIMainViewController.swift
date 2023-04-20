@@ -14,8 +14,6 @@ protocol ItemAction: AnyObject {
 
 final class MIMainViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,MICollectionViewBubbleLayoutDelegate {
     
-    @IBOutlet weak var textfiledEnterDetails3: UITextField!
-    @IBOutlet weak var textfiledEnterDetails2: UITextField!
     @IBOutlet private var collVData: UICollectionView!
     @IBOutlet private var buttonDone: UIButton!
     @IBOutlet private var buttonAddMoreData: UIButton!
@@ -50,38 +48,14 @@ final class MIMainViewController: UIViewController, UICollectionViewDataSource, 
     }
     @IBAction func doneButtonTapped(_ sender: UIButton) {
         
-        switch sender.tag {
-            
-        case 0:
-            if(self.textfiledEnterDetails.text?.isEmpty == false){
-                
-                arrData[sender.tag].add(newItem: Item(id:  UUID(), name: self.textfiledEnterDetails.text ?? "",image: ItemResource.chocolate.image,
-                                                      color: .orange,
-                                                      isSelected: false))
-            }
-        case 1:
-            if(self.textfiledEnterDetails2.text?.isEmpty == false){
-                arrData[sender.tag].add(newItem: Item(id:  UUID(), name: self.textfiledEnterDetails2.text ?? "",image: ItemResource.chocolate.image,
-                                                      color: .orange,
-                                                      isSelected: false))
-            }
-        case 2:
-            if(self.textfiledEnterDetails3.text?.isEmpty == false){
-                arrData[sender.tag].add(newItem: Item(id:  UUID(), name: self.textfiledEnterDetails3.text ?? "",image: ItemResource.chocolate.image,
-                                                      color: .orange,
-                                                      isSelected: false))
-            }
-        default:
-            break
+        if(self.textfiledEnterDetails.text?.isEmpty == false){
+            arrData[sender.tag].add(newItem: Item(id:  UUID(), name: self.textfiledEnterDetails.text ?? "",image: ItemResource.chocolate.image,
+                                                  color: .orange,
+                                                  isSelected: false))
         }
-        
         collVData.reloadData()
         self.textfiledEnterDetails.text = ""
-        self.textfiledEnterDetails2.text = ""
-        self.textfiledEnterDetails3.text = ""
         self.textfiledEnterDetails.resignFirstResponder()
-        self.textfiledEnterDetails2.resignFirstResponder()
-        self.textfiledEnterDetails3.resignFirstResponder()
     }
     
     // MARK: -
