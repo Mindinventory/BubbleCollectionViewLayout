@@ -81,9 +81,10 @@ Configuration for change DefaultInterItemSpacing & DefaultLineSpacing of collect
 
         let bubbleLayout = MICollectionViewBubbleLayout()
         bubbleLayout.minimumLineSpacing = 6.0
-        bubbleLayout.minimumInteritemSpacing = 6.0
-        bubbleLayout.delegate = self 
+        bubbleLayout.minimumInteritemSpacing = 0
+        bubbleLayout.horizontalAlignment = .leading
         collVData.setCollectionViewLayout(bubbleLayout, animated: false)
+        bubbleLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
 
 4. Implement MICollectionViewBubbleLayoutDelegate method to return size according to your text content.
 
