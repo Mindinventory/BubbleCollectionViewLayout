@@ -40,8 +40,8 @@ final class MIBubbleCollectionViewCell: UICollectionViewCell {
 }
 
 extension MIBubbleCollectionViewCell {
-
+    
     @IBAction func onCloseButtonTapped(_ sender: UIButton) {
-        delegate?.onCloseButtonTapped(with: item)
+        delegate?.onCloseButtonTapped(with: item, sender: sender)
     }
 }

@@ -9,19 +9,21 @@
 import UIKit
 
 protocol ItemAction: AnyObject {
-    func onCloseButtonTapped(with item: Item?)
+    func onCloseButtonTapped(with item: Item? ,sender: UIButton)
 }
 
-final class MIMainViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MICollectionViewBubbleLayoutDelegate {
+final class MIMainViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,MICollectionViewBubbleLayoutDelegate {
     
+    @IBOutlet weak var textfiledEnterDetails3: UITextField!
+    @IBOutlet weak var textfiledEnterDetails2: UITextField!
     @IBOutlet private var collVData: UICollectionView!
     @IBOutlet private var buttonDone: UIButton!
     @IBOutlet private var buttonAddMoreData: UIButton!
     @IBOutlet private var viewAddMoreData: UIView!
     @IBOutlet private var textfiledEnterDetails: UITextField!
-
+    
     private let kItemPadding = 10
-    private var arrData: [Item] = Item.mockItems {
+    private var arrData: [DataCollection] = DataCollection.sectionItems {
         didSet {
             collVData.reloadData()
         }
@@ -29,13 +31,16 @@ final class MIMainViewController: UIViewController, UICollectionViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //...UICollectionView setup
+        
         let bubbleLayout = MICollectionViewBubbleLayout()
         bubbleLayout.minimumLineSpacing = 6.0
-        bubbleLayout.minimumInteritemSpacing = 6.0
-        bubbleLayout.delegate = self 
+        bubbleLayout.minimumInteritemSpacing = 0
+        bubbleLayout.horizontalAlignment = .leading
         collVData.setCollectionViewLayout(bubbleLayout, animated: false)
+        bubbleLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        
     }
     // MARK: -
     // MARK: - IBACTION METHODS
@@ -43,21 +48,49 @@ final class MIMainViewController: UIViewController, UICollectionViewDataSource, 
         buttonAddMoreData.isHidden = true
         viewAddMoreData.isHidden = false
     }
-    @IBAction func doneButtonTapped(_ sender: Any) {
-        if(self.textfiledEnterDetails.text?.isEmpty == false){
-            arrData.append(Item(id:  UUID(), name: self.textfiledEnterDetails.text ?? "",image: ItemResource.chocolate.image,
-                                color: .orange,
-                                isSelected: false))
-            self.textfiledEnterDetails.resignFirstResponder()
-            collVData.reloadData()
-            self.textfiledEnterDetails.text = ""
+    @IBAction func doneButtonTapped(_ sender: UIButton) {
+        
+        switch sender.tag {
+            
+        case 0:
+            if(self.textfiledEnterDetails.text?.isEmpty == false){
+                
+                arrData[sender.tag].add(newItem: Item(id:  UUID(), name: self.textfiledEnterDetails.text ?? "",image: ItemResource.chocolate.image,
+                                                      color: .orange,
+                                                      isSelected: false))
+            }
+        case 1:
+            if(self.textfiledEnterDetails2.text?.isEmpty == false){
+                arrData[sender.tag].add(newItem: Item(id:  UUID(), name: self.textfiledEnterDetails2.text ?? "",image: ItemResource.chocolate.image,
+                                                      color: .orange,
+                                                      isSelected: false))
+            }
+        case 2:
+            if(self.textfiledEnterDetails3.text?.isEmpty == false){
+                arrData[sender.tag].add(newItem: Item(id:  UUID(), name: self.textfiledEnterDetails3.text ?? "",image: ItemResource.chocolate.image,
+                                                      color: .orange,
+                                                      isSelected: false))
+            }
+        default:
+            break
         }
+        
+        collVData.reloadData()
+        self.textfiledEnterDetails.text = ""
+        self.textfiledEnterDetails2.text = ""
+        self.textfiledEnterDetails3.text = ""
+        self.textfiledEnterDetails.resignFirstResponder()
+        self.textfiledEnterDetails2.resignFirstResponder()
+        self.textfiledEnterDetails3.resignFirstResponder()
     }
+    
     // MARK: -
     // MARK: - UICollectionView Delegate & Datasource
-    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        arrData.count
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrData.count
+        return arrData[section].item.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -65,23 +98,23 @@ final class MIMainViewController: UIViewController, UICollectionViewDataSource, 
         let indentifier = "MIBubbleCollectionViewCell"
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: indentifier, for: indexPath) as? MIBubbleCollectionViewCell {
-            cell.configure(with: arrData[indexPath.row])
+            cell.configure(with: arrData[indexPath.section].item[indexPath.row])
             cell.delegate = self
             return cell
         }
         return UICollectionViewCell()
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        arrData[indexPath.row].isSelected.toggle()
+        arrData[indexPath.section].item[indexPath.row].isSelected.toggle()
     }
-
+    
     // MARK: -
     // MARK: - MICollectionViewBubbleLayoutDelegate
     
     func collectionView(_ collectionView:UICollectionView, itemSizeAt indexPath:NSIndexPath) -> CGSize {
         
-        let title = arrData[indexPath.row].name
+        let title = arrData[indexPath.section].item[indexPath.row].name
         var size = title.size(withAttributes: [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 15)!])
         let closeButtonWidth = 20.0
         let imageWidth = 20.0
@@ -96,13 +129,60 @@ final class MIMainViewController: UIViewController, UICollectionViewDataSource, 
         }
         return size
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+            
+        case UICollectionView.elementKindSectionHeader:
+            
+            let headerView = collVData.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as! HeaderView
+            headerView.lblTitleText.text = arrData[indexPath.section].title
+            headerView.lblTitleText.sizeToFit()
+            return headerView
+            
+            
+        default:
+            return UICollectionReusableView()
+            
+        }
+    }
 }
 
 extension MIMainViewController: ItemAction {
-
-    func onCloseButtonTapped(with item: Item?) {
-
-        guard let safeItem = item else { return }
-        arrData = arrData.filter({$0.id != safeItem.id})
+    
+    func onCloseButtonTapped(with item: Item?,sender:UIButton) {
+        
+        guard item != nil else { return }
+        guard let indexPath = self.collVData.indexPathForView(view: sender) else { return }
+        arrData[(indexPath.section)].remove(newItem: item!)
     }
+}
+extension MIMainViewController: UICollectionViewDelegateFlowLayout {
+    
+    // MARK: - Collection View Delegate Flow Layout Methods
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 44.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 6.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 2.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if arrData[section].item.count == 0 {
+            return CGSize(width: collectionView.bounds.width, height: 0)
+        } else {
+            return CGSize(width: collectionView.bounds.width, height: 80.0)
+        }
+    }
+    
 }
